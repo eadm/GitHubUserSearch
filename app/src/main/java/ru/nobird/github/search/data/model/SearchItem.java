@@ -3,15 +3,15 @@ package ru.nobird.github.search.data.model;
 public class SearchItem {
     private String login;
     private long id;
-    private String avatarUrl;
-    private String gravatarId;
+    private String avatar_url;
+    private String gravatar_id;
     private String url;
-    private String htmlUrl;
-    private String followersUrl;
-    private String subscriptionsUrl;
-    private String organizationsUrl;
-    private String reposUrl;
-    private String receivedEventsUrl;
+    private String html_url;
+    private String followers_url;
+    private String subscriptions_url;
+    private String organizations_url;
+    private String repos_url;
+    private String received_events_url;
     private String type;
     private double score;
 
@@ -24,6 +24,6 @@ public class SearchItem {
     }
 
     public String getAvatarUrl() {
-        return avatarUrl;
+        return avatar_url;
     }
 }

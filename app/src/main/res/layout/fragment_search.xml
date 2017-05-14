@@ -19,11 +19,37 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/fragment_search_results"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ImageView
+                android:id="@+id/fragment_search_icon"
+                android:layout_width="256dp"
+                android:layout_height="256dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_search"
+                android:tint="@color/colorGray"
+                android:contentDescription="@string/search" />
+
+            <TextView
+                android:id="@+id/fragment_search_empty_result"
+                android:textColor="@color/colorGrayText"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/empty_search"
+                android:layout_margin="48dp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/fragment_search_results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </FrameLayout>
 
         <com.lapism.searchview.SearchView
             android:id="@+id/fragment_search_query"

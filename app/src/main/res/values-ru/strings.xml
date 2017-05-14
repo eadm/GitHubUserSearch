@@ -2,4 +2,7 @@
 <resources>
     <string name="search">Поиск</string>
     <string name="search_for_users">Поиск пользователей</string>
+    <string name="open">Открыть</string>
+    <string name="close">Закрыть</string>
+    <string name="empty_search">Мы не нашли пользователей, соответсвующих вашему запросу</string>
 </resources>

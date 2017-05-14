@@ -14,6 +14,8 @@ public class API {
 
     private static final String HOST = "https://api.github.com/";
 
+    public static final long PER_PAGE = 100;
+
     private final GitHubService gitHubService;
 
     private API() {
@@ -45,8 +47,8 @@ public class API {
         return instance;
     }
 
-    public Observable<UserSearchResponse> searchUsers(final String query) {
-        return gitHubService.searchUsers(query);
+    public Observable<UserSearchResponse> searchUsers(final String query, final long page) {
+        return gitHubService.searchUsers(query, page, PER_PAGE);
     }
 
     public Observable<User> getUser(final String username) {

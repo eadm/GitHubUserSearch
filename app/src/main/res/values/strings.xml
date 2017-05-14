@@ -2,4 +2,7 @@
     <string name="app_name" translatable="false">GitHub User Search</string>
     <string name="search">Search</string>
     <string name="search_for_users">Search for users</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="empty_search">We couldn\'t find any users matching your request</string>
 </resources>

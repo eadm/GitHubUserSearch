@@ -3,21 +3,21 @@ package ru.nobird.github.search.data.model;
 public class User {
     private String login;
     private long id;
-    private String avatarUrl;
-    private String gravatarId;
+    private String avatar_url;
+    private String gravatar_id;
     private String url;
-    private String htmlUrl;
-    private String followersUrl;
-    private String followingUrl;
-    private String gistsUrl;
-    private String starredUrl;
-    private String subscriptionsUrl;
-    private String organizationsUrl;
-    private String reposUrl;
-    private String eventsUrl;
-    private String receivedEventsUrl;
+    private String html_url;
+    private String followers_url;
+    private String following_url;
+    private String gists_url;
+    private String starred_url;
+    private String subscriptions_url;
+    private String organizations_url;
+    private String repos_url;
+    private String events_url;
+    private String received_events_url;
     private String type;
-    private boolean siteAdmin;
+    private boolean site_admin;
     private String name;
     private String company;
     private String blog;
@@ -25,12 +25,12 @@ public class User {
     private String email;
     private boolean hireable;
     private String bio;
-    private long privateRepos;
-    private long privateGists;
+    private long private_repos;
+    private long private_gists;
     private long followers;
     private long following;
-    private String createdAt;
-    private String updatedAt;
+    private String created_at;
+    private String updated_at;
 
     public String getLogin() {
         return login;
@@ -41,7 +41,7 @@ public class User {
     }
 
     public String getAvatarUrl() {
-        return avatarUrl;
+        return avatar_url;
     }
 
     public String getUrl() {

@@ -11,7 +11,9 @@ public interface GitHubService {
 
     @GET("search/users")
     Observable<UserSearchResponse> searchUsers(
-            @Query("q") final String query
+            @Query("q") final String query,
+            @Query("page") final long page,
+            @Query("per_page") final long per_page
     );
 
     @GET("users/{username}")
