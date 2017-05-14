@@ -17,6 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 import ru.nobird.github.search.R;
 import ru.nobird.github.search.data.db.DBMgr;
 import ru.nobird.github.search.databinding.FragmentBookmarkBinding;
+import ru.nobird.github.search.ui.activity.MainActivity;
 import ru.nobird.github.search.ui.adapter.BookmarksAdapter;
 
 public class BookmarkFragment extends Fragment {
@@ -43,9 +44,8 @@ public class BookmarkFragment extends Fragment {
         final FragmentBookmarkBinding binding
                 = DataBindingUtil.inflate(inflater, R.layout.fragment_bookmark, container, false);
 
-        final AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(binding.fragmentBookmarkToolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final MainActivity activity = (MainActivity) getActivity();
+        activity.setSupportActionBarWithToggle(binding.fragmentBookmarkToolbar);
 
         binding.fragmentBookmarkUsers.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.fragmentBookmarkUsers.setAdapter(adapter);

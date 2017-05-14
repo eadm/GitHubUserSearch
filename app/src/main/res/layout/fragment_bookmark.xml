@@ -18,7 +18,8 @@
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="@string/bookmarks"
-                android:theme="@style/AppTheme.ActionBarTheme"/>
+                android:theme="@style/AppTheme.ActionBarTheme"
+                style="@style/AppTheme.ActionBarTheme"/>
 
         </android.support.design.widget.AppBarLayout>
 
