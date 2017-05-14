@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/remove_from_bookmarks"
+        android:id="@+id/user_menu_remove"
+        android:icon="@drawable/ic_bookmark_black"
+        app:showAsAction="always"
+        android:visible="false"/>
+    <item
+        android:title="@string/add_to_bookmark"
+        android:id="@+id/user_menu_add"
+        android:icon="@drawable/ic_bookmark"
+        app:showAsAction="always"
+        android:visible="false" />
+</menu>

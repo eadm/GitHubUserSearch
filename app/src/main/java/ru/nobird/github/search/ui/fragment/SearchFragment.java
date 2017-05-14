@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -102,10 +103,9 @@ public class SearchFragment extends Fragment {
                         binding.fragmentSearchIcon.setVisibility(View.GONE);
                         binding.fragmentSearchEmptyResult.setVisibility(View.GONE);
                         loadSearchResult();
-                        return true;
                     }
                 }
-                return false;
+                return true;
             }
 
             @Override
@@ -132,13 +132,26 @@ public class SearchFragment extends Fragment {
                 .searchUsers(adapter.getQuery(), adapter.getPage())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onSearchResult, Throwable::printStackTrace);
+                .subscribe(this::onSearchResult, this::handleError);
     }
 
     private void onSearchResult(final UserSearchResponse response) {
         adapter.addItems(response.getItems());
         if (binding != null && adapter.getItemCount() == 0) {
             binding.fragmentSearchEmptyResult.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void handleError(final Throwable throwable) {
+        if (throwable != null) {
+            throwable.printStackTrace();
+        }
+
+        adapter.setLoading(false);
+
+        if (binding != null) {
+            Snackbar.make(binding.getRoot(), R.string.network_error, Snackbar.LENGTH_SHORT).show();
+            if (adapter.getItemCount() == 0) binding.fragmentSearchIcon.setVisibility(View.VISIBLE);
         }
     }
 }

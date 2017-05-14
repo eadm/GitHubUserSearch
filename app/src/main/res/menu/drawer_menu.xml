@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/search_for_users"
+        android:id="@+id/drawer_search"
+        android:icon="@drawable/ic_search"
+        android:visible="true"/>
+    <item
+        android:title="@string/bookmarks"
+        android:id="@+id/drawer_bookmarks"
+        android:icon="@drawable/ic_bookmark"
+        android:visible="true" />
+</menu>

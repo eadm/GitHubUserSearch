@@ -6,4 +6,7 @@
     <string name="close">Закрыть</string>
     <string name="empty_search">Мы не нашли пользователей, соответсвующих вашему запросу</string>
     <string name="network_error">При обработке запроса произошла ошибка</string>
+    <string name="bookmarks">Закладки</string>
+    <string name="add_to_bookmark">Добавить пользователя в закладки</string>
+    <string name="remove_from_bookmarks">Убрать пользователя из закладок</string>
 </resources>

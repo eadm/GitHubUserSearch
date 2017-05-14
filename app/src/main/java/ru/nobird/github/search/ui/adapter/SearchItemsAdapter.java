@@ -128,10 +128,10 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         return items.size();
     }
 
-    private class SearchItemViewHolder extends RecyclerView.ViewHolder {
-        private final SearchItemBinding binding;
+    public static class SearchItemViewHolder extends RecyclerView.ViewHolder {
+        public final SearchItemBinding binding;
 
-        private SearchItemViewHolder(final SearchItemBinding binding) {
+        public SearchItemViewHolder(final SearchItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

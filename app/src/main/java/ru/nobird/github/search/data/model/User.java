@@ -1,36 +1,74 @@
 package ru.nobird.github.search.data.model;
 
-public class User {
-    private String login;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
     private long id;
-    private String avatar_url;
-    private String gravatar_id;
-    private String url;
-    private String html_url;
-    private String followers_url;
-    private String following_url;
-    private String gists_url;
-    private String starred_url;
-    private String subscriptions_url;
-    private String organizations_url;
-    private String repos_url;
-    private String events_url;
-    private String received_events_url;
-    private String type;
-    private boolean site_admin;
+    private String login;
     private String name;
-    private String company;
-    private String blog;
+    private String avatar_url;
+    private String html_url;
     private String location;
-    private String email;
-    private boolean hireable;
     private String bio;
-    private long private_repos;
-    private long private_gists;
     private long followers;
     private long following;
-    private String created_at;
-    private String updated_at;
+
+    public User() {}
+
+    public User(long id, String login, String name, String avatar_url, String html_url, String location, String bio, long followers, long following) {
+        this.id = id;
+        this.login = login;
+        this.name = name;
+        this.avatar_url = avatar_url;
+        this.html_url = html_url;
+        this.location = location;
+        this.bio = bio;
+        this.followers = followers;
+        this.following = following;
+    }
+
+    protected User(Parcel in) {
+        id = in.readLong();
+        login = in.readString();
+        name = in.readString();
+        avatar_url = in.readString();
+        html_url = in.readString();
+        location = in.readString();
+        bio = in.readString();
+        followers = in.readLong();
+        following = in.readLong();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(login);
+        dest.writeString(name);
+        dest.writeString(avatar_url);
+        dest.writeString(html_url);
+        dest.writeString(location);
+        dest.writeString(bio);
+        dest.writeLong(followers);
+        dest.writeLong(following);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getLogin() {
         return login;
@@ -42,10 +80,6 @@ public class User {
 
     public String getAvatarUrl() {
         return avatar_url;
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     public String getBio() {
@@ -62,5 +96,13 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getHtml_url() {
+        return html_url;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

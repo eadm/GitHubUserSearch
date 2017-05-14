@@ -1,6 +1,7 @@
 package ru.nobird.github.search.ui.fragment;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
@@ -56,6 +57,13 @@ public class FragmentMgr {
             transaction.addToBackStack(null);
         }
         transaction.commit();
+    }
+
+    public void clear() {
+        final AppCompatActivity app = appReference.get();
+        if (app == null) return;
+
+        app.getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
 
