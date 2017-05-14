@@ -2,8 +2,12 @@
 <resources>
     <color name="colorPrimary">#007CC2</color>
     <color name="colorPrimaryDark">#0D66A7</color>
+    <color name="colorGradientStart">#018CC8</color>
+    <color name="colorGradientEnd">#0178BE</color>
+
     <color name="colorAccent">#FF4081</color>
     <color name="colorGray">#D4D8D8</color>
     <color name="colorGrayText">#576672</color>
     <color name="colorBackground">#E7EBED</color>
+    <color name="colorLightText">#A7D6EB</color>
 </resources>

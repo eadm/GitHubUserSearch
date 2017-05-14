@@ -5,4 +5,5 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="empty_search">We couldn\'t find any users matching your request</string>
+    <string name="network_error">An error occurred while processing your request</string>
 </resources>

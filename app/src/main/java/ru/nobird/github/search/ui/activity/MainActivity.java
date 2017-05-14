@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 
 import ru.nobird.github.search.R;
+import ru.nobird.github.search.ui.fragment.FragmentMgr;
 import ru.nobird.github.search.ui.fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,13 +18,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FragmentMgr.getInstance().attach(this);
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.activity_main_fragment_container, new SearchFragment())
-                    .commit();
+            FragmentMgr.getInstance().addFragment(R.id.activity_main_fragment_container, new SearchFragment(), false);
         }
 
         drawerLayout = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
@@ -32,8 +31,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            drawerLayout.openDrawer(Gravity.START);
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack();
+            } else {
+                openDrawer();
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void openDrawer() {
+        if (drawerLayout != null) {
+            drawerLayout.openDrawer(Gravity.START);
+        }
     }
 }

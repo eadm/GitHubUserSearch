@@ -59,4 +59,8 @@ public class User {
     public long getFollowing() {
         return following;
     }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/fragment_user_appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_gradient"
+            android:theme="@style/AppTheme.ActionBarTheme">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment_user_info_container"
+                app:contentScrim="@drawable/blue_gradient"
+                app:title=""
+                app:expandedTitleTextAppearance="@android:color/transparent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="32dp"
+                    app:layout_collapseMode="parallax">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/fragment_user_avatar"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/fragment_user_name"
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@android:color/white"
+                        android:layout_below="@id/fragment_user_avatar"
+                        android:visibility="gone"
+                        android:textSize="18sp"/>
+
+
+                    <TextView
+                        android:id="@+id/fragment_user_login"
+                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/colorLightText"
+                        android:layout_below="@id/fragment_user_name"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/fragment_user_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:title="">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="0"
+                        android:id="@+id/fragment_user_info_small">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/fragment_user_avatar_small"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:contentDescription="@null"
+                            android:layout_marginEnd="8dp"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/fragment_user_login_small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/white"
+                            android:layout_toEndOf="@id/fragment_user_avatar_small"
+                            android:layout_centerVertical="true"
+                            android:textSize="18sp"/>
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_user_repos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

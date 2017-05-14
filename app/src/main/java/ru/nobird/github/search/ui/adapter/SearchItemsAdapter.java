@@ -1,13 +1,12 @@
 package ru.nobird.github.search.ui.adapter;
 
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
@@ -18,6 +17,8 @@ import ru.nobird.github.search.R;
 import ru.nobird.github.search.api.API;
 import ru.nobird.github.search.data.model.SearchItem;
 import ru.nobird.github.search.databinding.SearchItemBinding;
+import ru.nobird.github.search.ui.fragment.FragmentMgr;
+import ru.nobird.github.search.ui.fragment.UserFragment;
 
 public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
     private final static int PROGRESS_VIEW_TYPE = 1;
@@ -52,13 +53,20 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof SearchItemViewHolder) {
-            ((SearchItemViewHolder) holder).binding.searchItemLogin.setText(items.get(position).getLogin());
-            final ImageView imageView = ((SearchItemViewHolder) holder).binding.searchItemAvatar;
-            Glide.with(imageView.getContext()).
+    public void onBindViewHolder(RecyclerView.ViewHolder hld, int position) {
+        if (hld instanceof SearchItemViewHolder) {
+            final SearchItemViewHolder holder = (SearchItemViewHolder) hld;
+            final SearchItem item = items.get(position);
+            final Context context = holder.binding.getRoot().getContext();
+
+            holder.binding.searchItemLogin.setText(item.getLogin());
+            Glide.with(context).
                     load(items.get(position).getAvatarUrl()).
-                    into(imageView);
+                    into(holder.binding.searchItemAvatar);
+
+            holder.binding.getRoot().setOnClickListener((v) ->
+                            FragmentMgr.getInstance().addFragment(0, UserFragment.newInstance(item), true)
+            );
         }
     }
 
@@ -69,7 +77,6 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         notifyItemRangeChanged(start, list.size());
         hasMore = list.size() == API.PER_PAGE;
         page++;
-        Log.d("addItems", "hasMore-" + hasMore + " page-" + page + " size-" + list.size());
     }
 
     public void clear() {
@@ -84,15 +91,12 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 items.add(null);
                 notifyItemInserted(size);
                 loading = true;
-
-                Log.d("setLoading", "true");
             }
         } else {
             if (size > 0 && items.get(size - 1) == null) {
                 items.remove(size - 1);
                 notifyItemRemoved(size - 1);
                 loading = false;
-                Log.d("setLoading", "false");
             }
         }
     }

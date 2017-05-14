@@ -1,5 +1,6 @@
 package ru.nobird.github.search.ui.fragment;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,16 +15,19 @@ import android.view.ViewGroup;
 import com.lapism.searchview.SearchView;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.nobird.github.search.R;
 import ru.nobird.github.search.api.API;
 import ru.nobird.github.search.api.UserSearchResponse;
 import ru.nobird.github.search.databinding.FragmentSearchBinding;
+import ru.nobird.github.search.ui.activity.MainActivity;
 import ru.nobird.github.search.ui.adapter.SearchItemsAdapter;
 
 public class SearchFragment extends Fragment {
     private SearchItemsAdapter adapter;
     private FragmentSearchBinding binding;
+    private Disposable disposable;
 
     @Nullable
     @Override
@@ -77,6 +81,12 @@ public class SearchFragment extends Fragment {
         adapter = new SearchItemsAdapter();
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+    }
+
     private void setSearchView(final SearchView searchView) {
         searchView.setHint(R.string.search_for_users);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -105,21 +115,20 @@ public class SearchFragment extends Fragment {
         });
 
         searchView.setVersionMargins(SearchView.VERSION_MARGINS_TOOLBAR_SMALL);
-
-        searchView.setOnMenuClickListener(() -> {
-            // todo open drawer
-        });
+        searchView.setVoice(false);
+        searchView.setOnMenuClickListener(() -> ((MainActivity) getActivity()).openDrawer());
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         adapter = null;
+        if (disposable != null) disposable.dispose();
+        super.onDestroy();
     }
 
     private void loadSearchResult() {
         adapter.setLoading(true);
-        API.getInstance()
+        disposable = API.getInstance()
                 .searchUsers(adapter.getQuery(), adapter.getPage())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
