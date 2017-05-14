@@ -7,22 +7,22 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.nobird.github.search.R;
 import ru.nobird.github.search.api.API;
 import ru.nobird.github.search.data.model.SearchItem;
 import ru.nobird.github.search.data.model.User;
 import ru.nobird.github.search.databinding.FragmentUserBinding;
+import ru.nobird.github.search.ui.adapter.RepoItemsAdapter;
 
 public class UserFragment extends Fragment {
     private static final String ARG_SEARCH_ITEM = "search_item";
@@ -35,29 +35,43 @@ public class UserFragment extends Fragment {
         return fragment;
     }
 
-    private Disposable disposable;
+    private CompositeDisposable compositeDisposable;
     private SearchItem item;
     private User user;
     private FragmentUserBinding binding;
+
+    private RepoItemsAdapter adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+
+        compositeDisposable = new CompositeDisposable();
+        adapter = new RepoItemsAdapter();
+
         item = getArguments().getParcelable(ARG_SEARCH_ITEM);
         if (item != null) {
-            disposable = API.getInstance()
+            compositeDisposable.add(API.getInstance()
                     .getUser(item.getLogin())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::setUser, this::handleError);
+                    .subscribe(this::setUser, this::handleError));
+
+            compositeDisposable.add(API.getInstance()
+                    .getUserRepos(item.getLogin())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(adapter::addItems, this::handleError)
+            );
         }
     }
 
 
     @Override
     public void onDestroy() {
-        if (disposable != null) disposable.dispose();
+        compositeDisposable.dispose();
+        adapter = null;
         super.onDestroy();
     }
 
@@ -89,8 +103,8 @@ public class UserFragment extends Fragment {
             }
         });
 
-
-
+        binding.fragmentUserRepos.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.fragmentUserRepos.setAdapter(adapter);
 
         return binding.getRoot();
     }

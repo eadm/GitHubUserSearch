@@ -20,7 +20,7 @@ import ru.nobird.github.search.databinding.SearchItemBinding;
 import ru.nobird.github.search.ui.fragment.FragmentMgr;
 import ru.nobird.github.search.ui.fragment.UserFragment;
 
-public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final static int PROGRESS_VIEW_TYPE = 1;
     private final static int SEARCH_ITEM_VIEW_TYPE = 2;
 
@@ -64,7 +64,7 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     load(items.get(position).getAvatarUrl()).
                     into(holder.binding.searchItemAvatar);
 
-            holder.binding.getRoot().setOnClickListener((v) ->
+            holder.binding.searchItemContainer.setOnClickListener((v) ->
                             FragmentMgr.getInstance().addFragment(0, UserFragment.newInstance(item), true)
             );
         }
