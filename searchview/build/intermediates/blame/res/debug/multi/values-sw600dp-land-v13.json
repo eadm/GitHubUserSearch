@@ -1,0 +1,64 @@
+[
+    {
+        "outputFile": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/build/intermediates/res/merged/debug/values-sw600dp-land-v13/values-sw600dp-land-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 68,
+                    "endOffset": 119
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/src/main/res/values-sw600dp-land/dimens_toolbar.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 184,
+                        "endColumn": 68,
+                        "endOffset": 248
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 124,
+                    "endColumn": 69,
+                    "endOffset": 189
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/src/main/res/values-sw600dp-land/dimens_toolbar.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 114,
+                        "endColumn": 69,
+                        "endOffset": 179
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 194,
+                    "endColumn": 56,
+                    "endOffset": 246
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/src/main/res/values-sw600dp-land/dimens_toolbar.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 56,
+                        "endOffset": 108
+                    }
+                }
+            }
+        ]
+    }
+]

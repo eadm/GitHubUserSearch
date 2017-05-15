@@ -15,8 +15,8 @@ import java.util.List;
 
 import ru.nobird.github.search.R;
 import ru.nobird.github.search.api.API;
-import ru.nobird.github.search.data.model.SearchItem;
-import ru.nobird.github.search.databinding.SearchItemBinding;
+import ru.nobird.github.search.data.model.UserSearchItem;
+import ru.nobird.github.search.databinding.UserSearchItemBinding;
 import ru.nobird.github.search.ui.fragment.FragmentMgr;
 import ru.nobird.github.search.ui.fragment.UserFragment;
 
@@ -24,7 +24,7 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private final static int PROGRESS_VIEW_TYPE = 1;
     private final static int SEARCH_ITEM_VIEW_TYPE = 2;
 
-    private final List<SearchItem> items;
+    private final List<UserSearchItem> items;
 
     private String query = "";
     private int page;
@@ -48,7 +48,7 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     LayoutInflater.from(parent.getContext()).inflate(R.layout.progress_item, parent, false));
         } else {
             return new SearchItemViewHolder(
-                    DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.search_item, parent, false));
+                    DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.user_search_item, parent, false));
         }
     }
 
@@ -56,7 +56,7 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(RecyclerView.ViewHolder hld, int position) {
         if (hld instanceof SearchItemViewHolder) {
             final SearchItemViewHolder holder = (SearchItemViewHolder) hld;
-            final SearchItem item = items.get(position);
+            final UserSearchItem item = items.get(position);
             final Context context = holder.binding.getRoot().getContext();
 
             holder.binding.searchItemLogin.setText(item.getLogin());
@@ -70,7 +70,7 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    public void addItems(final List<SearchItem> list) {
+    public void addItems(final List<UserSearchItem> list) {
         setLoading(false);
         final int start = items.size();
         items.addAll(list);
@@ -129,9 +129,9 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public static class SearchItemViewHolder extends RecyclerView.ViewHolder {
-        public final SearchItemBinding binding;
+        public final UserSearchItemBinding binding;
 
-        public SearchItemViewHolder(final SearchItemBinding binding) {
+        public SearchItemViewHolder(final UserSearchItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

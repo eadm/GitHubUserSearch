@@ -27,7 +27,7 @@ public class BookmarksAdapter extends RecyclerView.Adapter<SearchItemsAdapter.Se
     @Override
     public SearchItemsAdapter.SearchItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new SearchItemsAdapter.SearchItemViewHolder(
-                DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.search_item, parent, false));
+                DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.user_search_item, parent, false));
     }
 
     @Override

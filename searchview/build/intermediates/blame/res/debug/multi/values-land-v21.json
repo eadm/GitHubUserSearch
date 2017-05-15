@@ -1,0 +1,64 @@
+[
+    {
+        "outputFile": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/build/intermediates/res/merged/debug/values-land-v21/values-land-v21.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 68,
+                    "endOffset": 119
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/src/main/res/values-land-v21/dimens_toolbar.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 183,
+                        "endColumn": 68,
+                        "endOffset": 247
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 124,
+                    "endColumn": 69,
+                    "endOffset": 189
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/src/main/res/values-land-v21/dimens_toolbar.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 113,
+                        "endColumn": 69,
+                        "endOffset": 178
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 194,
+                    "endColumn": 55,
+                    "endOffset": 245
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/src/main/res/values-land-v21/dimens_toolbar.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 55,
+                        "endOffset": 107
+                    }
+                }
+            }
+        ]
+    }
+]

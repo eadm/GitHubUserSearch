@@ -12,8 +12,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.lapism.searchview.SearchAdapter;
+import com.lapism.searchview.SearchHistoryTable;
+import com.lapism.searchview.SearchItem;
 import com.lapism.searchview.SearchView;
+
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -29,6 +34,7 @@ public class SearchFragment extends Fragment {
     private SearchItemsAdapter adapter;
     private FragmentSearchBinding binding;
     private Disposable disposable;
+    private SearchHistoryTable searchHistoryTable;
 
     @Nullable
     @Override
@@ -80,6 +86,7 @@ public class SearchFragment extends Fragment {
         setHasOptionsMenu(true);
 
         adapter = new SearchItemsAdapter();
+        searchHistoryTable = new SearchHistoryTable(getContext());
     }
 
     @Override
@@ -93,18 +100,7 @@ public class SearchFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                if (!adapter.getQuery().equals(s)) {
-                    if (s.isEmpty()) {
-                        adapter.clear();
-                        binding.fragmentSearchIcon.setVisibility(View.VISIBLE);
-                    } else {
-                        searchView.close(false);
-                        adapter.setQuery(s);
-                        binding.fragmentSearchIcon.setVisibility(View.GONE);
-                        binding.fragmentSearchEmptyResult.setVisibility(View.GONE);
-                        loadSearchResult();
-                    }
-                }
+                onQueryText(searchView, s);
                 return true;
             }
 
@@ -116,13 +112,39 @@ public class SearchFragment extends Fragment {
 
         searchView.setVersionMargins(SearchView.VERSION_MARGINS_TOOLBAR_SMALL);
         searchView.setVoice(false);
+        searchView.close(false);
         searchView.setOnMenuClickListener(() -> ((MainActivity) getActivity()).openDrawer());
+        final SearchAdapter searchAdapter = new SearchAdapter(getContext());
+        searchAdapter.setOnSearchItemClickListener((view, position) -> {
+            final TextView textView = (TextView) view.findViewById(R.id.textView);
+            final String query = textView.getText().toString();
+            searchView.setQuery(query, false);
+            onQueryText(searchView, query);
+        });
+        searchView.setAdapter(searchAdapter);
+    }
+
+    private void onQueryText(final SearchView searchView, final String s) {
+        if (!adapter.getQuery().equals(s)) {
+            if (s.isEmpty()) {
+                adapter.clear();
+                binding.fragmentSearchIcon.setVisibility(View.VISIBLE);
+            } else {
+                searchView.close(false);
+                adapter.setQuery(s);
+                binding.fragmentSearchIcon.setVisibility(View.GONE);
+                binding.fragmentSearchEmptyResult.setVisibility(View.GONE);
+                searchHistoryTable.addItem(new SearchItem(s));
+                loadSearchResult();
+            }
+        }
     }
 
     @Override
     public void onDestroy() {
         adapter = null;
         if (disposable != null) disposable.dispose();
+        searchHistoryTable = null;
         super.onDestroy();
     }
 

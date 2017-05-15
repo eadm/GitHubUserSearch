@@ -1,0 +1,64 @@
+[
+    {
+        "outputFile": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/build/intermediates/res/merged/androidTest/debug/values-sw600dp-land-v21/values-sw600dp-land-v21.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 68,
+                    "endOffset": 119
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/build/intermediates/bundles/debug/res/values-sw600dp-land-v21/values-sw600dp-land-v21.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 68,
+                        "endOffset": 119
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 124,
+                    "endColumn": 69,
+                    "endOffset": 189
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/build/intermediates/bundles/debug/res/values-sw600dp-land-v21/values-sw600dp-land-v21.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 124,
+                        "endColumn": 69,
+                        "endOffset": 189
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 194,
+                    "endColumn": 56,
+                    "endOffset": 246
+                },
+                "from": {
+                    "file": "/Users/ruslandavletshin/Yandex.Disk.localized/Projects/stepik/GitHubUserSearch/searchview/build/intermediates/bundles/debug/res/values-sw600dp-land-v21/values-sw600dp-land-v21.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 194,
+                        "endColumn": 56,
+                        "endOffset": 246
+                    }
+                }
+            }
+        ]
+    }
+]

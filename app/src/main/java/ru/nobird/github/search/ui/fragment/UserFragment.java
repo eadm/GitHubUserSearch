@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,24 +20,23 @@ import com.bumptech.glide.Glide;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import ru.nobird.github.search.R;
 import ru.nobird.github.search.api.API;
 import ru.nobird.github.search.data.db.DBMgr;
-import ru.nobird.github.search.data.model.SearchItem;
+import ru.nobird.github.search.data.model.UserSearchItem;
 import ru.nobird.github.search.data.model.User;
 import ru.nobird.github.search.databinding.FragmentUserBinding;
 import ru.nobird.github.search.ui.adapter.RepoItemsAdapter;
 import ru.nobird.github.search.ui.helper.UIHelper;
 
 public class UserFragment extends Fragment {
-    private static final String ARG_SEARCH_ITEM = "search_item";
+    private static final String ARG_SEARCH_ITEM = "user_search_item";
     private static final String ARG_USER_ITEM = "user_item";
 
-    public static Fragment newInstance(final SearchItem item) {
+    public static Fragment newInstance(final UserSearchItem item) {
         return newInstance(ARG_SEARCH_ITEM, item);
     }
 
@@ -55,7 +53,7 @@ public class UserFragment extends Fragment {
     }
 
     private CompositeDisposable compositeDisposable;
-    private SearchItem item;
+    private UserSearchItem item;
     private User user;
     private FragmentUserBinding binding;
 
